@@ -1,46 +1,52 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MessageSquare, TrendingUp, Sparkles } from "lucide-react";
+import { TrendingUp, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { CharacterCard } from "@/components/CharacterCard";
 import { VoteModal } from "@/components/VoteModal";
+import { CommentThread } from "@/components/CommentThread";
+import { useUserProfile } from "@/hooks/useUserProfile";
+import { Character, MBTIType } from "@/lib/types";
 
-const SAMPLE_CHARACTERS = [
+const SAMPLE_CHARACTERS: Character[] = [
   {
     id: 1,
     name: "Elon Musk",
     image: "https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=400&h=400&fit=crop",
     topTypes: [
-      { type: "INTJ", percentage: 45 },
-      { type: "ENTJ", percentage: 38 },
-      { type: "INTP", percentage: 12 },
+      { type: "INTJ" as MBTIType, percentage: 45 },
+      { type: "ENTJ" as MBTIType, percentage: 38 },
+      { type: "INTP" as MBTIType, percentage: 12 },
     ],
     votes: 2847,
     comments: 456,
     topComment: "Kesinlikle INTJ - Te dominant davranışlar gösteriyor ama core Ni.",
     topCommenter: "NiNavigator",
-    topCommenterType: "INTJ",
+    topCommenterType: "INTJ" as MBTIType,
   },
   {
     id: 2,
     name: "Taylor Swift",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     topTypes: [
-      { type: "ENFJ", percentage: 52 },
-      { type: "ESFJ", percentage: 28 },
-      { type: "INFJ", percentage: 15 },
+      { type: "ENFJ" as MBTIType, percentage: 52 },
+      { type: "ESFJ" as MBTIType, percentage: 28 },
+      { type: "INFJ" as MBTIType, percentage: 15 },
     ],
     votes: 3201,
     comments: 678,
     topComment: "Fe dom açık - şarkılarındaki duygusal hikayeler bunu gösteriyor.",
     topCommenter: "FeelingFirst",
-    topCommenterType: "ENFJ",
+    topCommenterType: "ENFJ" as MBTIType,
   },
 ];
 
 const Feed = () => {
+  const navigate = useNavigate();
+  const { profile } = useUserProfile();
   const [selectedCharacter, setSelectedCharacter] = useState<number | null>(null);
+  const [commentCharacter, setCommentCharacter] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<"hot" | "new" | "foryou">("hot");
 
   return (
@@ -49,16 +55,25 @@ const Feed = () => {
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <button 
+              onClick={() => navigate("/")}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            >
               <div className="h-8 w-8 rounded-lg bg-gradient-primary" />
               <h1 className="text-2xl font-bold">Typely</h1>
-            </div>
-            <div className="flex items-center gap-2">
-              <Badge variant="secondary" className="gap-1">
-                <Sparkles className="h-3 w-3" />
-                247 XP
-              </Badge>
-            </div>
+            </button>
+            {profile && (
+              <button
+                onClick={() => navigate("/profile")}
+                className="flex items-center gap-2 hover:bg-muted/50 rounded-lg p-2 transition-colors"
+              >
+                <Badge variant="secondary" className="gap-1">
+                  <Sparkles className="h-3 w-3" />
+                  {profile.xp} XP
+                </Badge>
+                <div className={`h-8 w-8 rounded-full bg-${profile.auraColor}-500`} />
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -99,6 +114,7 @@ const Feed = () => {
               key={character.id}
               character={character}
               onVote={() => setSelectedCharacter(character.id)}
+              onOpenComments={() => setCommentCharacter(character.id)}
             />
           ))}
         </div>
@@ -110,6 +126,19 @@ const Feed = () => {
           isOpen={!!selectedCharacter}
           onClose={() => setSelectedCharacter(null)}
           character={SAMPLE_CHARACTERS.find((c) => c.id === selectedCharacter)!}
+          onOpenComments={() => {
+            setCommentCharacter(selectedCharacter);
+            setSelectedCharacter(null);
+          }}
+        />
+      )}
+
+      {/* Comment Thread */}
+      {commentCharacter && (
+        <CommentThread
+          isOpen={!!commentCharacter}
+          onClose={() => setCommentCharacter(null)}
+          character={SAMPLE_CHARACTERS.find((c) => c.id === commentCharacter)!}
         />
       )}
     </div>
