@@ -30,10 +30,79 @@ const Index = () => {
     },
   ];
 
-  const trendingDebates = [
-    { character: "Elon Musk", votes: "1.2K", question: "ENTJ mi INTJ mi?", type: "ENTJ", hot: true, views: "12.4K" },
-    { character: "Taylor Swift", votes: "987", question: "ESFJ mi ENFJ mi?", type: "ESFJ", hot: false, views: "8.2K" },
-    { character: "Tyler Durden", votes: "2.4K", question: "ENTP mi ENTJ mi?", type: "ENTP", hot: true, views: "18.9K" },
+  const characters = [
+    { 
+      name: "Tyler Durden", 
+      votes: "2.4K", 
+      mbti: "ENTP", 
+      enneagram: "8w7",
+      image: "🎭",
+      consensus: 68,
+      hot: true, 
+      views: "18.9K",
+      comments: 234,
+      recentVote: "ENTP confirmed. dude literally invented chaos for fun 💀"
+    },
+    { 
+      name: "Elon Musk", 
+      votes: "1.2K", 
+      mbti: "INTJ", 
+      enneagram: "5w6",
+      image: "🚀",
+      consensus: 45,
+      hot: true, 
+      views: "12.4K",
+      comments: 189,
+      recentVote: "bro is 100% INTJ, vision + execution = Te-Ni"
+    },
+    { 
+      name: "Taylor Swift", 
+      votes: "987", 
+      mbti: "ESFJ", 
+      enneagram: "3w2",
+      image: "🎤",
+      consensus: 72,
+      hot: false, 
+      views: "8.2K",
+      comments: 156,
+      recentVote: "Fe dom vibes everywhere, clearly ESFJ"
+    },
+    { 
+      name: "Wednesday Addams", 
+      votes: "3.1K", 
+      mbti: "INTJ", 
+      enneagram: "5w4",
+      image: "🖤",
+      consensus: 89,
+      hot: true, 
+      views: "22.1K",
+      comments: 312,
+      recentVote: "peak Ni-Te energy, no debate needed"
+    },
+    { 
+      name: "Tony Stark", 
+      votes: "2.8K", 
+      mbti: "ENTP", 
+      enneagram: "7w8",
+      image: "⚡",
+      consensus: 61,
+      hot: true, 
+      views: "19.7K",
+      comments: 278,
+      recentVote: "Ne-Ti god, argues for sport lmao"
+    },
+    { 
+      name: "Hermione Granger", 
+      votes: "1.9K", 
+      mbti: "ISTJ", 
+      enneagram: "1w2",
+      image: "📚",
+      consensus: 54,
+      hot: false, 
+      views: "14.3K",
+      comments: 198,
+      recentVote: "Si-Te stack obvious, but some say ESTJ 🤔"
+    },
   ];
 
   return (
@@ -41,317 +110,275 @@ const Index = () => {
       {/* Animated Background Glow */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.12),transparent_70%)] animate-glow-pulse pointer-events-none" />
       
-      {/* Hero Section */}
-      <section className="relative">
-        <div className="container relative mx-auto px-4 pt-20 pb-16">
+      {/* Compact Hero */}
+      <section className="relative border-b border-border">
+        <div className="container relative mx-auto px-4 py-8">
           {/* Auth Buttons - Top Right */}
-          <div className="absolute top-6 right-6 flex gap-3">
-            <Button variant="ghost" size="sm" className="gap-2 text-foreground/80 hover:text-foreground">
+          <div className="absolute top-4 right-6 flex gap-2">
+            <Button variant="ghost" size="sm" className="text-sm">
               Sign In
             </Button>
-            <Button size="sm" className="gap-2 bg-gradient-primary hover:shadow-glow">
+            <Button size="sm" className="text-sm bg-gradient-primary">
               Sign Up
             </Button>
           </div>
 
-          <div className="max-w-6xl mx-auto text-center space-y-8">
-            {/* Logo & Brand */}
-            <div className="flex flex-col items-center gap-4 animate-fade-in">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-primary blur-2xl opacity-40 animate-glow-pulse" />
-                <div className="relative h-16 w-16 rounded-2xl bg-gradient-primary flex items-center justify-center animate-float shadow-glow">
-                  <Brain className="h-8 w-8 text-primary-foreground" />
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow">
+                  <Brain className="h-5 w-5 text-primary-foreground" />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-black">
+                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Typology</span>
+                  </h1>
+                  <p className="text-xs text-muted-foreground">MBTI • Enneagram • Socionics</p>
                 </div>
               </div>
-              <h1 className="text-5xl md:text-6xl font-black">
-                <span className="bg-gradient-to-r from-primary via-primary-glow to-secondary bg-clip-text text-transparent">Typology</span>{" "}
-                <span className="text-foreground">Community</span>
-              </h1>
+              
+              <div className="hidden md:flex items-center gap-6 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-muted-foreground">2.8K online</span>
+                </div>
+                <div className="text-muted-foreground">15K+ typed</div>
+                <div className="text-muted-foreground">43K votes today</div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Hero Headline */}
-            <div className="space-y-4 animate-slide-up">
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                kişilik tiplerini tartış, ünlülere oy ver, cognitive functions ile deep dive yap.
-                <br />
-                <span className="text-foreground/60">MBTI • Enneagram • Socionics</span>
-              </p>
-            </div>
+      {/* Main Content Grid */}
+      <section className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-6">
+          
+          {/* Left Sidebar - Quick Actions */}
+          <div className="hidden lg:block space-y-4">
+            <Card className="p-4 border-border bg-card">
+              <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
+                <Zap className="h-4 w-4 text-primary" />
+                quick start
+              </h3>
+              <div className="space-y-2">
+                <Button 
+                  size="sm" 
+                  className="w-full justify-start text-sm bg-gradient-primary"
+                  onClick={() => navigate("/onboarding")}
+                >
+                  <Brain className="mr-2 h-4 w-4" />
+                  tipini keşfet 🧠
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  className="w-full justify-start text-sm"
+                  onClick={() => navigate("/feed")}
+                >
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  hot debates 🔥
+                </Button>
+              </div>
+            </Card>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Button
-                size="lg"
-                className="text-lg px-8 py-6 rounded-xl shadow-glow hover:shadow-[0_0_60px_hsl(var(--primary)/0.5)] hover:scale-105 transition-all duration-300 group bg-gradient-primary"
+            <Card className="p-4 border-border bg-card">
+              <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
+                <Trophy className="h-4 w-4 text-primary" />
+                top analysts
+              </h3>
+              <div className="space-y-3">
+                {[
+                  { name: "typology_god", xp: "12.4K", badge: "👑" },
+                  { name: "mbti_master", xp: "9.8K", badge: "🔥" },
+                  { name: "enneagram_pro", xp: "8.2K", badge: "⚡" },
+                ].map((user, i) => (
+                  <div key={i} className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="text-muted-foreground">#{i + 1}</span>
+                      <span className="font-medium">{user.name}</span>
+                      <span>{user.badge}</span>
+                    </div>
+                    <span className="text-primary font-bold">{user.xp} XP</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          {/* Main Feed - Character Grid */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold flex items-center gap-2">
+                <Flame className="h-6 w-6 text-orange-500" />
+                trending now
+              </h2>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="text-primary"
                 onClick={() => navigate("/feed")}
               >
-                <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                explore hot debates 🔥
+                view all →
+              </Button>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {characters.map((char, i) => (
+                <Card
+                  key={i}
+                  className="group p-5 border-border bg-card hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+                  onClick={() => navigate("/feed")}
+                >
+                  <div className="space-y-4">
+                    {/* Header */}
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="text-4xl">{char.image}</div>
+                        <div>
+                          <h3 className="font-bold text-lg group-hover:text-primary transition-colors">
+                            {char.name}
+                          </h3>
+                          <div className="flex items-center gap-2 mt-1">
+                            <Badge className="bg-gradient-primary text-primary-foreground text-xs">
+                              {char.mbti}
+                            </Badge>
+                            <Badge variant="outline" className="text-xs">
+                              {char.enneagram}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                      {char.hot && (
+                        <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                          <Flame className="h-3 w-3 mr-1" />
+                          HOT
+                        </Badge>
+                      )}
+                    </div>
+
+                    {/* Consensus Bar */}
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-muted-foreground">consensus</span>
+                        <span className="font-bold text-primary">{char.consensus}%</span>
+                      </div>
+                      <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-primary transition-all duration-500"
+                          style={{ width: `${char.consensus}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Recent Vote */}
+                    <div className="p-3 rounded-lg bg-muted/50 border border-border">
+                      <p className="text-xs text-foreground/80 line-clamp-2">
+                        "{char.recentVote}"
+                      </p>
+                    </div>
+
+                    {/* Stats */}
+                    <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1">
+                          <ArrowUp className="h-3.5 w-3.5" />
+                          {char.votes}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <MessageSquare className="h-3.5 w-3.5" />
+                          {char.comments}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Eye className="h-3.5 w-3.5" />
+                          {char.views}
+                        </div>
+                      </div>
+                      <Button size="sm" variant="ghost" className="h-7 text-xs text-primary">
+                        vote now →
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* XP Banner */}
+            <Card className="p-4 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="text-sm font-medium">
+                      her doğru tahmin <span className="text-primary font-bold">+15 XP</span>
+                    </p>
+                    <p className="text-xs text-muted-foreground">leaderboard'u bas, exclusive badge'ler topla 👑</p>
+                  </div>
+                </div>
+                <Button size="sm" className="bg-gradient-primary" onClick={() => navigate("/feed")}>
+                  başla
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Features - Compact */}
+      <section className="container mx-auto px-4 py-12 border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">neden buradayız? 🤔</h3>
+            <p className="text-sm text-muted-foreground">kişilik tiplerini sosyal bir deneyime dönüştürdük</p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-4">
+            {features.map((feature, i) => (
+              <Card
+                key={i}
+                className="p-4 border-border bg-card hover:border-primary/40 transition-all"
+              >
+                <div className="text-center space-y-2">
+                  <div className="h-10 w-10 mx-auto rounded-lg bg-gradient-primary flex items-center justify-center">
+                    <feature.icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <h4 className="font-bold text-sm">{feature.title}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* CTA Section - Compact */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <Card className="p-8 text-center border-primary/30 bg-gradient-card">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">
+              kendi gibilerini bul, anlaşıl ✨
+            </h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              kişiliğini keşfet, hot takes paylaş, leaderboard'u bas
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button
+                size="lg"
+                className="bg-gradient-primary shadow-glow hover:scale-105 transition-transform"
+                onClick={() => navigate("/feed")}
+              >
+                <Sparkles className="mr-2 h-5 w-5" />
+                explore debates 🔥
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 rounded-xl border-2 border-border hover:bg-card hover:border-primary/50 transition-all duration-300"
                 onClick={() => navigate("/onboarding")}
               >
                 <Brain className="mr-2 h-5 w-5" />
-                tipini bul
+                tipimi bul
               </Button>
-            </div>
-
-            {/* Stats Bar */}
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 pt-8">
-              <div className="group cursor-default">
-                <div className="text-3xl font-black bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent group-hover:scale-110 transition-transform">
-                  2.8K+
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">typologists online</div>
-              </div>
-              <div className="h-12 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
-              <div className="group cursor-default">
-                <div className="text-3xl font-black bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent group-hover:scale-110 transition-transform">
-                  15K+
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">personalities typed</div>
-              </div>
-              <div className="h-12 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
-              <div className="group cursor-default">
-                <div className="text-3xl font-black bg-gradient-to-r from-primary-glow to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform">
-                  43K+
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">votes today</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="container mx-auto px-4 py-20 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-3">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              neden buradayız? 🤔
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              kişilik tiplerini sosyal bir deneyime dönüştürdük. vibe check passed ✅
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {features.map((feature, i) => (
-              <Card
-                key={i}
-                className="group p-6 border-border bg-card hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-primary blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
-                    <div className="relative h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300">
-                      <feature.icon className="h-6 w-6 text-primary-foreground" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{feature.title}</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trending Debates Section */}
-      <section className="container mx-auto px-4 py-20 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-2 flex items-center gap-3">
-                <Flame className="h-8 w-8 text-orange-500" />
-                trending debates
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                2.8K people vibing rn 👀
-              </p>
-            </div>
-            <Button 
-              variant="ghost" 
-              className="text-primary hover:text-primary-glow"
-              onClick={() => navigate("/feed")}
-            >
-              view all →
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            {trendingDebates.map((debate, i) => (
-              <Card
-                key={i}
-                className="group p-5 border-border bg-card hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${i * 80}ms` }}
-                onClick={() => navigate("/feed")}
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <Badge 
-                      className={`gap-1.5 ${debate.hot ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white' : 'bg-muted text-muted-foreground'}`}
-                    >
-                      {debate.hot && <Flame className="h-3 w-3" />}
-                      {debate.hot ? 'HOT' : 'NEW'}
-                    </Badge>
-                    <Badge variant="outline" className="gap-1 text-xs">
-                      {debate.type}
-                    </Badge>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                      {debate.character}
-                    </h4>
-                    <p className="text-sm text-muted-foreground mb-3">{debate.question}</p>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <ArrowUp className="h-3.5 w-3.5" />
-                        {debate.votes}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Eye className="h-3.5 w-3.5" />
-                        {debate.views}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MessageSquare className="h-3.5 w-3.5" />
-                        {Math.floor(Math.random() * 200) + 50}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          {/* Quick XP Teaser */}
-          <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Zap className="h-5 w-5 text-primary" />
-                <span className="text-sm font-medium">
-                  her doğru tahmin <span className="text-primary font-bold">+15 XP</span>. analyst badge'i topla, leaderboard'u bas 👑
-                </span>
-              </div>
-              <Button size="sm" variant="outline" className="border-primary/30 hover:bg-primary/10">
-                başla
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="container mx-auto px-4 py-20 relative">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold mb-3">
-              nasıl çalışıyor? 🤔
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              4 adımda typology pro ol
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              {
-                step: "01",
-                title: "tipini keşfet",
-                desc: "quick test yap, MBTI/Enneagram/Socionics tipini bul. cognitive functions ile deep dive.",
-                icon: Brain,
-                emoji: "🧠"
-              },
-              {
-                step: "02",
-                title: "tartışmalara gir",
-                desc: "ünlülerin ve karakterlerin tiplerini tahmin et, oy ver, hot takes paylaş.",
-                icon: MessageSquare,
-                emoji: "💬"
-              },
-              {
-                step: "03",
-                title: "communitiy'ni bul",
-                desc: "kendi tipindeki insanlarla exclusive odalarda takıl. senin gibi düşünenler burada.",
-                icon: Users,
-                emoji: "🤝"
-              },
-              {
-                step: "04",
-                title: "XP topla, yüksel",
-                desc: "her doğru tahmin XP getiriyor. leaderboard'da zirveye çık, exclusive badge'ler topla.",
-                icon: Trophy,
-                emoji: "👑"
-              },
-            ].map((item, i) => (
-              <Card 
-                key={item.step} 
-                className="group p-6 border-border bg-card hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="relative flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-primary blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
-                    <div className="relative h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center text-lg font-black shadow-lg">
-                      {item.step}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
-                      {item.title} {item.emoji}
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="container mx-auto px-4 py-20 relative">
-        <div className="max-w-6xl mx-auto relative">
-          {/* Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-primary blur-3xl opacity-15" />
-          
-          <Card className="relative p-12 md:p-16 text-center border-primary/30 bg-gradient-card backdrop-blur-xl shadow-card-hover">
-            <div className="space-y-6">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                "benim gibi düşünen insanlar var
-                <br />
-                <span className="bg-gradient-to-r from-primary via-primary-glow to-secondary bg-clip-text text-transparent">
-                  ve burada anlaşılıyorum" ✨
-                </span>
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                kişiliğini keşfet, senin gibilerle bağlan, hot takes paylaş.
-              </p>
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  size="lg"
-                  className="text-lg px-10 py-6 rounded-xl shadow-glow hover:shadow-[0_0_50px_hsl(var(--primary)/0.6)] hover:scale-105 transition-all duration-300 group bg-gradient-primary"
-                  onClick={() => navigate("/feed")}
-                >
-                  <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                  explore now 🔥
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-10 py-6 rounded-xl border-2 border-border hover:bg-card hover:border-primary/50 transition-all duration-300"
-                  onClick={() => navigate("/onboarding")}
-                >
-                  <Brain className="mr-2 h-5 w-5" />
-                  tipimi bul
-                </Button>
-              </div>
             </div>
           </Card>
         </div>
