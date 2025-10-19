@@ -8,33 +8,34 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Dark Mode - Z kuşağı için göz yormayan tonlar */
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
 
-    --card: 240 8% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 8% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
     --primary: 263 70% 60%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 263 85% 75%;
 
     --secondary: 180 70% 55%;
-    --secondary-foreground: 240 10% 3.9%;
+    --secondary-foreground: 222 47% 7%;
 
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
     --accent: 263 70% 50%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 20%;
-    --input: 240 5% 20%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
     --ring: 263 70% 60%;
 
     --radius: 0.75rem;
@@ -42,14 +43,20 @@ All colors MUST be HSL.
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(263 70% 60%), hsl(263 85% 75%));
     --gradient-secondary: linear-gradient(135deg, hsl(180 70% 55%), hsl(263 70% 60%));
-    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(263 70% 60% / 0.2), transparent 70%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(263 70% 60% / 0.15), transparent 70%);
+    --gradient-card: linear-gradient(135deg, hsl(222 47% 11%), hsl(222 47% 13%));
     
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(263 70% 60% / 0.3);
-    --shadow-card: 0 4px 24px hsl(240 10% 3.9% / 0.4);
+    --shadow-glow: 0 0 40px hsl(263 70% 60% / 0.25);
+    --shadow-card: 0 4px 24px hsl(222 47% 4% / 0.5);
+    --shadow-card-hover: 0 8px 32px hsl(263 70% 60% / 0.2);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* UGC Platform specific */
+    --hot-badge: 0 84% 60%;
+    --trending-badge: 47 96% 53%;
   }
 }
 
