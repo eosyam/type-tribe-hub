@@ -8,55 +8,36 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark Mode - Z kuşağı için göz yormayan tonlar */
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
+    /* Discord-inspired minimal dark palette */
+    --background: 222 16% 9%;
+    --foreground: 210 11% 96%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 223 14% 12%;
+    --card-foreground: 210 11% 96%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 223 14% 12%;
+    --popover-foreground: 210 11% 96%;
 
-    --primary: 263 70% 60%;
+    --primary: 235 86% 65%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 263 85% 75%;
 
-    --secondary: 180 70% 55%;
-    --secondary-foreground: 222 47% 7%;
+    --secondary: 240 5% 26%;
+    --secondary-foreground: 210 11% 96%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 223 12% 18%;
+    --muted-foreground: 215 9% 61%;
 
-    --accent: 263 70% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 235 86% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 58%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 263 70% 60%;
+    --border: 223 10% 20%;
+    --input: 223 10% 20%;
+    --ring: 235 86% 65%;
 
-    --radius: 0.75rem;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(263 70% 60%), hsl(263 85% 75%));
-    --gradient-secondary: linear-gradient(135deg, hsl(180 70% 55%), hsl(263 70% 60%));
-    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(263 70% 60% / 0.15), transparent 70%);
-    --gradient-card: linear-gradient(135deg, hsl(222 47% 11%), hsl(222 47% 13%));
-    
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(263 70% 60% / 0.25);
-    --shadow-card: 0 4px 24px hsl(222 47% 4% / 0.5);
-    --shadow-card-hover: 0 8px 32px hsl(263 70% 60% / 0.2);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* UGC Platform specific */
-    --hot-badge: 0 84% 60%;
-    --trending-badge: 47 96% 53%;
+    --radius: 0.5rem;
   }
 }
 
