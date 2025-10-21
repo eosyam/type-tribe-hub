@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { Chrome, MessageCircle } from "lucide-react";
 import { z } from "zod";
 
 const authSchema = z.object({
@@ -19,6 +20,25 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  const handleOAuthLogin = async (provider: 'google' | 'discord') => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
+      
+      if (error) throw error;
+    } catch (error: any) {
+      toast({
+        title: "Hata",
+        description: error.message || "OAuth giriş başarısız",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,6 +108,40 @@ const Auth = () => {
           <p className="text-sm text-muted-foreground">
             {isSignIn ? "Hesabına giriş yap" : "Yeni hesap oluştur"}
           </p>
+        </div>
+
+        {/* OAuth Buttons */}
+        <div className="space-y-3">
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => handleOAuthLogin('google')}
+          >
+            <Chrome className="mr-2 h-5 w-5" />
+            Google ile devam et
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => handleOAuthLogin('discord')}
+          >
+            <MessageCircle className="mr-2 h-5 w-5" />
+            Discord ile devam et
+          </Button>
+        </div>
+
+        {/* Divider */}
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-border" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-card px-2 text-muted-foreground">
+              veya e-posta ile devam et
+            </span>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
