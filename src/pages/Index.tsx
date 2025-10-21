@@ -97,14 +97,13 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm">
-              Giriş Yap
-            </Button>
-            <Button size="sm" className="bg-primary">
-              Kayıt Ol
-            </Button>
-          </div>
+          <Button 
+            size="sm" 
+            className="bg-primary"
+            onClick={() => navigate("/auth")}
+          >
+            Login
+          </Button>
         </div>
       </header>
 
