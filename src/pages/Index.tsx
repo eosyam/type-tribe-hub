@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Brain, MessageSquare, TrendingUp, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Logo } from "@/components/Logo";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -85,25 +86,29 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <Brain className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-foreground">Typology</h1>
-              <p className="text-[10px] text-muted-foreground">MBTI • Enneagram • Socionics</p>
-            </div>
-          </div>
+      <header className="border-b border-border/50 bg-background/80 backdrop-blur-lg sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <button 
+              onClick={() => navigate("/")}
+              className="hover:opacity-80 transition-opacity"
+            >
+              <Logo />
+            </button>
+            
+            <nav className="hidden md:flex items-center gap-6">
+              <Button variant="ghost" onClick={() => navigate("/feed")}>
+                Feed
+              </Button>
+              <Button variant="ghost" onClick={() => navigate("/insights")}>
+                Insights
+              </Button>
+            </nav>
 
-          <Button 
-            size="sm" 
-            className="bg-primary"
-            onClick={() => navigate("/auth")}
-          >
-            Login
-          </Button>
+            <Button onClick={() => navigate("/auth")} className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
+              Giriş Yap
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -224,8 +229,8 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded bg-primary" />
-              <span>© 2025 Typology</span>
+              <Logo size="sm" showText={false} />
+              <span>© 2025 Psyche</span>
             </div>
             <div className="flex gap-6">
               <a href="#" className="hover:text-foreground transition-colors">Hakkında</a>

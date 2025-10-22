@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Chrome, MessageCircle } from "lucide-react";
 import { z } from "zod";
+import { Logo } from "@/components/Logo";
 
 const authSchema = z.object({
   email: z.string().trim().email({ message: "Geçersiz e-posta adresi" }).max(255),
@@ -101,9 +102,12 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="w-full max-w-md p-8 space-y-6 bg-card rounded-lg border border-border">
+        <div className="flex justify-center mb-4">
+          <Logo size="lg" />
+        </div>
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-semibold text-foreground">
-            Typology'ye Hoş Geldin
+            Psyche'ye Hoş Geldin
           </h1>
           <p className="text-sm text-muted-foreground">
             {isSignIn ? "Hesabına giriş yap" : "Yeni hesap oluştur"}

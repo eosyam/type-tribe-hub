@@ -8,6 +8,7 @@ import { VoteModal } from "@/components/VoteModal";
 import { CommentThread } from "@/components/CommentThread";
 import { useUserProfile } from "@/hooks/useUserProfile";
 import { Character, MBTIType } from "@/lib/types";
+import { Logo } from "@/components/Logo";
 
 const SAMPLE_CHARACTERS: Character[] = [
   {
@@ -57,10 +58,9 @@ const Feed = () => {
           <div className="flex items-center justify-between">
             <button 
               onClick={() => navigate("/")}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              className="hover:opacity-80 transition-opacity"
             >
-              <div className="h-8 w-8 rounded-lg bg-gradient-primary" />
-              <h1 className="text-2xl font-bold">Typely</h1>
+              <Logo />
             </button>
             {profile && (
               <button

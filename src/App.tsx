@@ -10,6 +10,8 @@ import Profile from "./pages/Profile";
 import Onboarding from "./pages/Onboarding";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Insights from "./pages/Insights";
+import InsightThread from "./pages/InsightThread";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { hasCompletedOnboarding } = useUserProfile();
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/feed" element={<ProtectedRoute><Feed /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/:id" element={<InsightThread />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
